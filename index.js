@@ -6,7 +6,7 @@ const products = {
         hint: 'Не похоже на еду',
         image: 'https://static.wikia.nocookie.net/dont-starve/images/0/06/%D0%9C%D1%8F%D1%81%D0%BE_%D0%BC%D0%BE%D0%BD%D1%81%D1%82%D1%80%D0%B0.png/revision/latest?cb=20130621024257&path-prefix=ru',
     },
-    'Трава': {
+    'Срезанная трава': {
         name: 'Срезанная трава',
         price: 5,
         quality: 'good',
@@ -27,7 +27,7 @@ const products = {
         hint: 'Это камень. Чего тут непонятного?',
         image: 'https://static.wikia.nocookie.net/dont-starve/images/c/c0/%D0%9A%D0%B0%D0%BC%D0%BD%D0%B8.png/revision/latest?cb=20121221191016&path-prefix=ru',
     },
-    'Золото': {
+    'Золотой самородок': {
         name: 'Золотой самородок',
         price: 60,
         quality: 'good',
@@ -41,7 +41,7 @@ const products = {
         hint: 'Произведено лучшими ткачихами гигантских пауков',
         image: 'https://static.wikia.nocookie.net/dont-starve/images/e/e3/%D0%9F%D0%B0%D1%83%D1%82%D0%B8%D0%BD%D0%B0.png/revision/latest?cb=20130316201238&path-prefix=ru',
     },
-    'Камыш': {
+    'Срезанный камыш': {
         name: 'Срезанный камыш',
         price: 13,
         quality: 'good',
@@ -92,6 +92,63 @@ const products = {
     },
 };
 
+const cart = {
+};
+
+const cartDiv = document.getElementById('cart');
+function renderCart() {
+    const cartContent = [];
+    let total = 0;
+    Object.entries(cart).forEach(function(item){
+        const [key, value] = item;
+        console.log(key, value);
+
+        const element = document.createElement('div');
+        element.classList.add('cart-item');
+
+        const elementName = document.createElement('div');
+        elementName.classList.add('cart-item__name');
+        elementName.innerText = key;
+        element.append(elementName);
+
+        const elementCount = document.createElement('div');
+        elementCount.classList.add('cart-item__count');
+        elementCount.innerText = value.count;
+        element.append(elementCount);
+
+        const elementPrice = document.createElement('div');
+        elementPrice.classList.add('cart-item__price');
+        const subtotal = products[key].price * value.count;
+        elementPrice.innerHTML = subtotal + ' ' + '&#321;';
+        element.append(elementPrice);
+
+        total = total + subtotal;
+
+        cartContent.push(element);
+    });
+    const totalDiv = document.createElement('div');
+    totalDiv.classList.add('cart-total');
+    totalDiv.innerHTML = 'Итого: ' + total + ' ' + '&#321;';
+    cartContent.push(totalDiv);
+
+    cartDiv.replaceChildren(...cartContent);
+};
+
+function addToCart(event) {
+    const name = event.target.parentNode.querySelector('.product-name').innerText;
+    const productInCart = cart[name];
+    if (productInCart !== undefined) {
+        cart[name].count += 1;
+    }
+    else {
+        cart[name] = {
+            count: 1
+        };
+    } 
+    renderCart();
+};
+
+
 
 const products_container = document.getElementById('productsContainer');
 Object.values(products).forEach(element => {
@@ -102,6 +159,7 @@ Object.values(products).forEach(element => {
     const imageDiv = document.createElement("div");
     imageDiv.style.backgroundImage = `url(${element.image})`;
     imageDiv.classList.add('product-image');
+    imageDiv.setAttribute('title', element.hint);
     productParentDiv.append(imageDiv);
 
     const nameDiv = document.createElement("div");
@@ -123,11 +181,11 @@ Object.values(products).forEach(element => {
     addToCartButton.classList.add('add-to-cart-button');
     addToCartButton.innerText = 'Добавить в корзину';
     addToCartButton.setAttribute('type', 'button');
+    addToCartButton.addEventListener('click', addToCart);
     productParentDiv.append(addToCartButton);
 
-    const hintDiv = document.createElement("div");
-    hintDiv.classList.add('product-hint');
-    hintDiv.innerHTML = element.hint;
-    
     products_container.append(productParentDiv);
 });
+
+
+
