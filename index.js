@@ -92,6 +92,21 @@ const products = {
     },
 };
 
+const productsQuality = {
+    'good': {
+        name: 'Хороший',
+        percent: 100,
+    },
+    'medium': {
+        name: 'Средний',
+        percent: 70,
+    },
+    'low': {
+        name: 'Плохой',
+        percent: 30,
+    },
+};
+
 const cart = {
 };
 
@@ -174,7 +189,18 @@ Object.values(products).forEach(element => {
 
     const qualityDiv = document.createElement("div");
     qualityDiv.classList.add('product-quality');
-    qualityDiv.innerHTML = 'Состояние: ' + element.quality;
+    const qualitySelect = document.createElement("select");
+    Object.entries(productsQuality).forEach(function(qualityItem) {
+        const [qualityKey, qualityValue] = qualityItem;
+        const option = document.createElement("option");
+        option.setAttribute('value', qualityKey);
+        option.innerText = qualityValue.name;
+        qualitySelect.append(option);
+    });
+    
+    qualityDiv.append(qualitySelect);
+
+    //qualityDiv.innerHTML = 'Состояние: ' + element.quality;
     productParentDiv.append(qualityDiv);
 
     const addToCartButton = document.createElement('button');
