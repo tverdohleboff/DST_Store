@@ -29,7 +29,7 @@ const products = {
     },
     'Золотой самородок': {
         name: 'Золотой самородок',
-        basePrice: 60,
+        basePrice: 600,
         quality: 'good',
         hint: 'Небольшой кусок золота. Атомный номер 79',
         image: 'https://static.wikia.nocookie.net/dont-starve/images/2/26/%D0%97%D0%BE%D0%BB%D0%BE%D1%82%D0%BE%D0%B9_%D1%81%D0%B0%D0%BC%D0%BE%D1%80%D0%BE%D0%B4%D0%BE%D0%BA.png/revision/latest?cb=20121221190147&path-prefix=ru',
