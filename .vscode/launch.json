@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
-            "url": "file:///C:/Users/Aleks/VS%20Coding/DST_Store/index.html",
+            "url": "file:///C:/Users/Aleks/VS_Coding/DST_Store/index.html",
             "webRoot": "${workspaceFolder}"
         }
     ]
