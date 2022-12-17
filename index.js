@@ -144,7 +144,33 @@ function renderCart() {
     totalDiv.innerHTML = 'Итого: ' + total.toFixed(2) + ' ' + '&#321;';
     cartContent.push(totalDiv);
 
+    const placeOrderButton = document.createElement('button');
+    placeOrderButton.classList.add('place-order-button');
+    placeOrderButton.innerText = 'Разместить заказ';
+    placeOrderButton.setAttribute('type', 'button');
+    placeOrderButton.addEventListener('click', openModal);
+    cartContent.push(placeOrderButton);
+
     cartDiv.replaceChildren(...cartContent);
+};
+
+function placeOrder() {
+
+};
+
+const modalCloseButton = document.querySelector(".modal-close-button");
+modalCloseButton.addEventListener('click', closeModal);
+
+function openModal() {
+    const modalDiv = document.querySelector(".modal");
+    modalDiv.classList.remove("modal_closed");
+    modalDiv.classList.add("modal_opened");
+};
+
+function closeModal() {
+    const modalDiv = document.querySelector(".modal");
+    modalDiv.classList.remove("modal_opened");
+    modalDiv.classList.add("modal_closed");
 };
 
 function addToCart(event) {
@@ -225,6 +251,7 @@ Object.values(products).forEach(element => {
 
     products_container.append(productParentDiv);
 });
+
 
 
 

@@ -125,3 +125,50 @@ body {
     font-weight: bold;
     text-align: right;
 }
+
+.modal {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+
+.modal_opened {
+    display: block;
+}
+
+.modal_closed {
+    display: none;
+}
+
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-container {
+    width: 500px;
+    min-height: 200px;
+    padding: 24px;
+    background-color: white;
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.modal-close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    background-color: white;
+    border: 0;
+    cursor: pointer;
+}
