@@ -19,8 +19,27 @@
     <div class="modal modal_closed">
         <div class="overlay">
             <div class="modal-container">
-                <div class="modal-inner-container"></div>
-                <button type="button" class="modal-close-button">x</button>
+                <div class="modal-inner-container">
+                    <form id="placeOrderForm">
+                        <div class="place-order-form__input-container">
+                            <label for="firstName" class="place-order-form__label">Имя</label>
+                            <input id="firstName" type="text" name="firstName" class="place-order-form__input" />
+                        </div>
+                        <div class="place-order-form__input-container">
+                            <label for="lastName"  class="place-order-form__label">Фамилия</label>
+                            <input id="lastName" type="text" name="lastName" class="place-order-form__input" />
+                        </div>
+                        <div class="place-order-form__input-container">
+                            <label for="email"  class="place-order-form__label">E-mail</label>
+                            <input id="email" type="email" name="email" class="place-order-form__input" />
+                        </div>
+                        <div class="place-order-form__buttons-container">
+                            <button type="submit" id="modalPlaceOrderButton" class="button place-order-form__submit-button">Разместить заказ</button>
+                            <button type="button" id="modalCancelOrderButton" class="button place-order-form__cancel-button">Отмена</button>
+                        </div>
+                    </form>
+                </div>
+                <button type="button" class="modal-close-button">&#9587;</button>
             </div>
         </div>
     </div>  

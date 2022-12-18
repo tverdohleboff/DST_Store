@@ -107,8 +107,11 @@ const productsQuality = {
     },
 };
 
-const cart = {
-};
+let cart = {};
+
+const orders = {};
+
+let ordersCount = 0;
 
 const cartDiv = document.getElementById('cart');
 function renderCart() {
@@ -145,8 +148,8 @@ function renderCart() {
     cartContent.push(totalDiv);
 
     const placeOrderButton = document.createElement('button');
-    placeOrderButton.classList.add('place-order-button');
-    placeOrderButton.innerText = 'Разместить заказ';
+    placeOrderButton.classList.add('button', 'place-order-button');
+    placeOrderButton.innerText = 'Сформировать заказ';
     placeOrderButton.setAttribute('type', 'button');
     placeOrderButton.addEventListener('click', openModal);
     cartContent.push(placeOrderButton);
@@ -154,12 +157,46 @@ function renderCart() {
     cartDiv.replaceChildren(...cartContent);
 };
 
-function placeOrder() {
+function placeOrder(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const formEntries = Object.fromEntries(formData);
+    ordersCount = ordersCount + 1;
+    const orderId = ordersCount;
+    const order = {
+        orderId: orderId,
+        orderDate: new Date(),
+        firstName: formEntries.firstName,
+        lastName: formEntries.lastName,
+        email: formEntries.email,
+        cart: {
+            ...cart
+        }
+    };
+    orders[orderId] = order;
+    cart = {};
+    renderCart();
+    closeModal();
+    clearFormInputs();
+    console.log("orders", orders);
+};
 
+function clearFormInputs() {
+    const placeOrderForm = document.querySelector("#placeOrderForm");
+    const inputs = placeOrderForm.querySelectorAll("input");
+    inputs.forEach(function(input) {
+        input.value = "";
+    })
 };
 
 const modalCloseButton = document.querySelector(".modal-close-button");
 modalCloseButton.addEventListener('click', closeModal);
+
+const modalCancelOrderButton = document.querySelector("#modalCancelOrderButton");
+modalCancelOrderButton.addEventListener('click', closeModal);
+
+const placeOrderForm = document.querySelector("#placeOrderForm");
+placeOrderForm.addEventListener('submit', placeOrder);
 
 function openModal() {
     const modalDiv = document.querySelector(".modal");

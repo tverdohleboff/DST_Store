@@ -152,9 +152,9 @@ body {
 }
 
 .modal-container {
-    width: 500px;
+    width: 600px;
     min-height: 200px;
-    padding: 24px;
+    padding: 36px;
     background-color: white;
     position: relative;
     flex: 0 0 auto;
@@ -164,11 +164,56 @@ body {
     position: absolute;
     top: 0;
     right: 0;
-    width: 24px;
-    height: 24px;
-    line-height: 24px;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
     text-align: center;
     background-color: white;
     border: 0;
     cursor: pointer;
+    font-size: 16px;
+}
+
+.place-order-form__input-container {
+    margin-bottom: 16px;
+}
+
+.place-order-form__label {
+    display: block;
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 4px;
+}
+
+.place-order-form__input {
+    border: 1px solid #777;
+    display: block;
+    width: 100%;
+    font-size: 18px;
+    padding: 16px;
+    border-radius: 4px;
+}
+
+.place-order-form__buttons-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+}
+
+.button {
+    display: inline-block;
+    font-size: 18px;
+    line-height: 24px;
+    padding: 16px 32px;
+    border: 1px solid #777;
+    border-radius: 4px;
+    color: black;
+    background-color: #eee;
+    cursor: pointer;
+}
+
+.place-order-form__submit-button {
+    background-color: rgb(55, 90, 233);
+    color: white;
+    border-color: rgb(43, 71, 184);
 }
