@@ -29,7 +29,7 @@ const products = {
     },
     'Золотой самородок': {
         name: 'Золотой самородок',
-        basePrice: 600,
+        basePrice: 60,
         quality: 'good',
         hint: 'Небольшой кусок золота. Атомный номер 79',
         image: 'image/золото.webp',
@@ -113,12 +113,84 @@ const orders = {};
 
 let ordersCount = 0;
 
+const ordersDiv = document.getElementById("orders");
+
+function renderOrders() {
+    const orderContent = [];
+    Object.values(orders).forEach(function(order) {
+        const element = document.createElement('div');
+        element.classList.add('order');
+
+        const elementId = document.createElement('div');
+        elementId.classList.add('order-id');
+        elementId.innerText = 'Заказ: ' + order.orderId;
+        element.append(elementId);
+        
+        const elementDate = document.createElement('div');
+        elementDate.classList.add('order-date');
+        elementDate.innerText = order.orderDate.toLocaleString();
+        element.append(elementDate);
+
+        const elementClient = document.createElement('div');
+        elementClient.classList.add('order-client');
+        elementClient.innerText = order.firstName + ' ' + order.lastName;
+        element.append(elementClient);
+
+        const elementClientEmail = document.createElement('div');
+        elementClientEmail.classList.add('order-client-email');
+        elementClientEmail.innerText = order.email;
+        element.append(elementClientEmail);
+
+        const cartContent = [];
+        let total = 0;
+        Object.values(order.cart).forEach(function(cartItem) {
+            const cartElement = document.createElement('div');
+            cartElement.classList.add('cart-item');
+    
+            const cartElementName = document.createElement('div');
+            cartElementName.classList.add('cart-item__name');
+            cartElementName.innerText = cartItem.name + ' (' + productsQuality[cartItem.quality].name + ')';
+            cartElement.append(cartElementName);
+    
+            const cartElementCount = document.createElement('div');
+            cartElementCount.classList.add('cart-item__count');
+            cartElementCount.innerText = cartItem.count;
+            cartElement.append(cartElementCount);
+    
+            const cartElementPrice = document.createElement('div');
+            cartElementPrice.classList.add('cart-item__price');
+            const subtotal = (products[cartItem.name].basePrice * productsQuality[cartItem.quality].percent / 100) * cartItem.count;
+            cartElementPrice.innerHTML = subtotal.toFixed(2) + ' ' + '&#321;';
+            cartElement.append(cartElementPrice);
+    
+            total = total + subtotal;
+    
+            cartContent.push(cartElement);
+        });
+    
+        const totalDiv = document.createElement('div');
+        totalDiv.classList.add('cart-total');
+        totalDiv.innerHTML = 'Итого: ' + total.toFixed(2) + ' ' + '&#321;';
+        cartContent.push(totalDiv);
+
+        const orderCart = document.createElement('div');
+        orderCart.classList.add('order-cart');
+        orderCart.replaceChildren(...cartContent);
+        element.append(orderCart);
+
+        orderContent.push(element);
+    });
+
+    ordersDiv.replaceChildren(...orderContent);
+
+};
+
 const cartDiv = document.getElementById('cart');
+
 function renderCart() {
     const cartContent = [];
     let total = 0;
-    Object.entries(cart).forEach(function(item){
-        const [key, cartItem] = item;
+    Object.values(cart).forEach(function(cartItem) {
         const element = document.createElement('div');
         element.classList.add('cart-item');
 
@@ -142,6 +214,7 @@ function renderCart() {
 
         cartContent.push(element);
     });
+
     const totalDiv = document.createElement('div');
     totalDiv.classList.add('cart-total');
     totalDiv.innerHTML = 'Итого: ' + total.toFixed(2) + ' ' + '&#321;';
@@ -178,7 +251,7 @@ function placeOrder(event) {
     renderCart();
     closeModal();
     clearFormInputs();
-    console.log("orders", orders);
+    renderOrders();
 };
 
 function clearFormInputs() {
