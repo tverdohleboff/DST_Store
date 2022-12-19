@@ -354,7 +354,7 @@ Object.values(products).forEach(element => {
 
     const addToCartButton = document.createElement('button');
     addToCartButton.classList.add('add-to-cart-button');
-    addToCartButton.innerText = 'Добавить в корзину';
+    addToCartButton.innerText = 'В корзину';
     addToCartButton.setAttribute('type', 'button');
     addToCartButton.addEventListener('click', addToCart);
     productParentDiv.append(addToCartButton);
