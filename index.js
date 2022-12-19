@@ -160,7 +160,7 @@ function renderOrders() {
             const cartElementPrice = document.createElement('div');
             cartElementPrice.classList.add('cart-item__price');
             const subtotal = (products[cartItem.name].basePrice * productsQuality[cartItem.quality].percent / 100) * cartItem.count;
-            cartElementPrice.innerHTML = subtotal.toFixed(2) + ' ' + '&#321;';
+            cartElementPrice.innerHTML = subtotal.toFixed(2) + '&nbsp;&#321;';
             cartElement.append(cartElementPrice);
     
             total = total + subtotal;
@@ -170,7 +170,7 @@ function renderOrders() {
     
         const totalDiv = document.createElement('div');
         totalDiv.classList.add('cart-total');
-        totalDiv.innerHTML = 'Итого: ' + total.toFixed(2) + ' ' + '&#321;';
+        totalDiv.innerHTML = 'Итого: ' + total.toFixed(2) + '&nbsp;&#321;';
         cartContent.push(totalDiv);
 
         const orderCart = document.createElement('div');
@@ -207,7 +207,7 @@ function renderCart() {
         const elementPrice = document.createElement('div');
         elementPrice.classList.add('cart-item__price');
         const subtotal = (products[cartItem.name].basePrice * productsQuality[cartItem.quality].percent / 100) * cartItem.count;
-        elementPrice.innerHTML = subtotal.toFixed(2) + ' ' + '&#321;';
+        elementPrice.innerHTML = subtotal.toFixed(2) + '&nbsp;&#321;';
         element.append(elementPrice);
 
         total = total + subtotal;
@@ -217,12 +217,12 @@ function renderCart() {
 
     const totalDiv = document.createElement('div');
     totalDiv.classList.add('cart-total');
-    totalDiv.innerHTML = 'Итого: ' + total.toFixed(2) + ' ' + '&#321;';
+    totalDiv.innerHTML = 'Итого: ' + total.toFixed(2) + '&nbsp;&#321;';
     cartContent.push(totalDiv);
 
     const placeOrderButton = document.createElement('button');
     placeOrderButton.classList.add('button', 'place-order-button');
-    placeOrderButton.innerText = 'Сформировать заказ';
+    placeOrderButton.innerText = 'Оформить';
     placeOrderButton.setAttribute('type', 'button');
     placeOrderButton.addEventListener('click', openModal);
     cartContent.push(placeOrderButton);
@@ -309,7 +309,7 @@ function changePrice(event) {
     const priceDiv = select.parentNode.parentNode.querySelector('.product-price');
     const name = select.parentNode.parentNode.querySelector('.product-name').innerText; 
     const price = ((products[name].basePrice * productsQuality[quality].percent) / 100).toFixed(2);
-    priceDiv.innerHTML = price  + ' &#321;';
+    priceDiv.innerHTML = price  + '&nbsp;&#321;';
 };
 
 const products_container = document.getElementById('productsContainer');
@@ -331,7 +331,7 @@ Object.values(products).forEach(element => {
 
     const priceDiv = document.createElement("div");
     priceDiv.classList.add('product-price');
-    priceDiv.innerHTML = element.basePrice + ' &#321;';
+    priceDiv.innerHTML = element.basePrice + '&nbsp;&#321;';
     productParentDiv.append(priceDiv);
 
     const qualityDiv = document.createElement("div");
@@ -349,7 +349,6 @@ Object.values(products).forEach(element => {
     
     qualityDiv.append(qualitySelect);
 
-    //qualityDiv.innerHTML = 'Состояние: ' + element.quality;
     productParentDiv.append(qualityDiv);
 
     const addToCartButton = document.createElement('button');
