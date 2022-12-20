@@ -8,7 +8,7 @@ body {
     margin: 0;
 }
 
-.text-zagolovok {
+.text-header {
     text-align: center;
   }
 
@@ -47,6 +47,7 @@ body {
 }
 
 .product-name {
+    color: #333;
     text-align: center;
     font-weight: bold;
     line-height: 28px;
@@ -56,6 +57,7 @@ body {
 }
 
 .product-price {
+    color: #333;
     text-align: center;
     font-style: italic;
     font-size: 32px;
@@ -72,14 +74,14 @@ body {
     font-size: 20px;
     padding: 10px 10px;
     background-color: white;
-    color: black;
-    border: 1px solid black;
+    color: rgb(0, 0, 5);
+    border: 1px solid rgb(0, 0, 5);
     border-radius: 18px;
 }
 
 .add-to-cart-button {
     width: 100%;
-    font-size: 20px;
+    font-size: 24px;
     background-color: #ffe23e;
     text-align: center;
     display: block;
@@ -282,7 +284,7 @@ body {
 
 .orders-container {
     max-width: 1230px;
-    padding: 0 15px;
+    padding: 20px 15px;
     margin: 0 auto;
 }
 
@@ -323,6 +325,10 @@ body {
 
 .order-cart {
     max-width: 360px;
+}
+
+.text-orders {
+    text-align: center;
 }
 
 @media screen and (min-width: 768px) {
