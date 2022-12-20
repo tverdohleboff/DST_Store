@@ -100,7 +100,6 @@ body {
     box-shadow: 0 3px 7px rgba(0,0,0,0.3);
     transition: opacity 0.3s ease-in-out;
     }
-}
 
 .cart-container {
     flex-basis: 100%;
@@ -117,6 +116,7 @@ body {
 }
 
 .cart-title {
+    text-align: center;
     font-size: 24px;
     font-weight: bold;
 }
@@ -359,7 +359,7 @@ body {
 
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 600px) {
     .modal-container {
         width: 600px;
         min-height: 200px;
@@ -368,6 +368,10 @@ body {
         position: relative;
         flex: 0 0 auto;
     }
+}
+
+@media screen and (min-width: 1024px) {
+    
 }
 
 @media screen and (min-width: 1200px) {
