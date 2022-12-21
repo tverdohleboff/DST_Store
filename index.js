@@ -215,17 +215,19 @@ function renderCart() {
         cartContent.push(element);
     });
 
-    const totalDiv = document.createElement('div');
-    totalDiv.classList.add('cart-total');
-    totalDiv.innerHTML = 'Итого: ' + total.toFixed(2) + '&nbsp;&#321;';
-    cartContent.push(totalDiv);
-
-    const placeOrderButton = document.createElement('button');
-    placeOrderButton.classList.add('button', 'place-order-button');
-    placeOrderButton.innerText = 'Оформить';
-    placeOrderButton.setAttribute('type', 'button');
-    placeOrderButton.addEventListener('click', openModal);
-    cartContent.push(placeOrderButton);
+    if(Object.keys(cart).length > 0) {
+        const totalDiv = document.createElement('div');
+        totalDiv.classList.add('cart-total');
+        totalDiv.innerHTML = 'Итого: ' + total.toFixed(2) + '&nbsp;&#321;';
+        cartContent.push(totalDiv);
+    
+        const placeOrderButton = document.createElement('button');
+        placeOrderButton.classList.add('button', 'place-order-button');
+        placeOrderButton.innerText = 'Оформить';
+        placeOrderButton.setAttribute('type', 'button');
+        placeOrderButton.addEventListener('click', openModal);
+        cartContent.push(placeOrderButton);
+    }
 
     cartDiv.replaceChildren(...cartContent);
 };
