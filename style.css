@@ -132,27 +132,26 @@ body {
 }
 
 .cart-item__name {
-    flex: 1 0 60%;
+    flex: 1 0 55%;
 }
 
 .cart-item__count {
     flex: 1 0 5%;  
-    text-align: center;
+    text-align: right;
     padding-left: 1rem;
 }
 
 .cart-item__price {
     min-width: 6rem;
-    flex: 1 0 30%; 
     text-align: right;
     padding-left: 1rem;
 }
 
 .cart-total {
-    padding: 15px 0;
-    font-size: 20px;
+    padding: 1.5rem 5px 1rem 5px;
+    font-size: 1.3rem;
     font-weight: bold;
-    text-align: right;
+    text-align: center;
 }
 
 .modal {
@@ -315,6 +314,7 @@ body {
 
 .order-id {
     font-weight: bold;
+    font-size: 1.05rem;
 }
 
 .order-client, 
