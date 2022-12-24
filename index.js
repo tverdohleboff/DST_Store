@@ -130,16 +130,20 @@ function renderOrders() {
         elementDate.classList.add('order-date');
         elementDate.innerText = order.orderDate.toLocaleString();
         element.append(elementDate);
+        
+        if(order.firstName.length > 0 || order.lastName.length > 0) {
+            const elementClient = document.createElement('div');
+            elementClient.classList.add('order-client');
+            elementClient.innerText = order.firstName + ' ' + order.lastName;
+            element.append(elementClient);
+        }
 
-        const elementClient = document.createElement('div');
-        elementClient.classList.add('order-client');
-        elementClient.innerText = order.firstName + ' ' + order.lastName;
-        element.append(elementClient);
-
-        const elementClientEmail = document.createElement('div');
-        elementClientEmail.classList.add('order-client-email');
-        elementClientEmail.innerText = order.email;
-        element.append(elementClientEmail);
+        if(order.email.length > 0) {
+            const elementClientEmail = document.createElement('div');
+            elementClientEmail.classList.add('order-client-email');
+            elementClientEmail.innerText = order.email;
+            element.append(elementClientEmail);
+        }
 
         const cartContent = [];
         let total = 0;
@@ -187,12 +191,30 @@ function renderOrders() {
 
 const cartDiv = document.getElementById('cart');
 
+function decrementCartItemCount(event) {
+    const cartItemKey = event.target.parentNode.parentNode.id;
+    const cartItemCount = cart[cartItemKey].count;
+    if(cartItemCount > 1) {
+        cart[cartItemKey].count -=1;
+    } else {
+        delete cart[cartItemKey];
+    }
+    renderCart();
+}
+
+function incrementCartItemCount(event) {
+    const cartItemKey = event.target.parentNode.parentNode.id;
+    cart[cartItemKey].count +=1;
+    renderCart();
+}
+
 function renderCart() {
     const cartContent = [];
     let total = 0;
-    Object.values(cart).forEach(function(cartItem) {
+    Object.entries(cart).forEach(function([cartItemKey, cartItem]) {
         const element = document.createElement('div');
         element.classList.add('cart-item');
+        element.setAttribute('id', cartItemKey);
 
         const elementName = document.createElement('div');
         elementName.classList.add('cart-item__name');
@@ -201,8 +223,26 @@ function renderCart() {
 
         const elementCount = document.createElement('div');
         elementCount.classList.add('cart-item__count');
-        elementCount.innerText = cartItem.count;
         element.append(elementCount);
+        
+        const elementCountButtonMinus = document.createElement('button');
+        elementCountButtonMinus.classList.add('cart-item__count-button-minus');
+        elementCountButtonMinus.innerText = '-';
+        elementCountButtonMinus.setAttribute('type', 'button');
+        elementCountButtonMinus.addEventListener('click', decrementCartItemCount);
+        elementCount.append(elementCountButtonMinus);
+
+        const elementCountText = document.createElement('div');
+        elementCountText.classList.add('cart-item__count-text');
+        elementCountText.innerText = cartItem.count;
+        elementCount.append(elementCountText);
+
+        const elementCountButtonPlus = document.createElement('button');
+        elementCountButtonPlus.classList.add('cart-item__count-button-plus');
+        elementCountButtonPlus.innerText = '+';
+        elementCountButtonPlus.setAttribute('type', 'button');
+        elementCountButtonPlus.addEventListener('click', incrementCartItemCount);
+        elementCount.append(elementCountButtonPlus);
 
         const elementPrice = document.createElement('div');
         elementPrice.classList.add('cart-item__price');
