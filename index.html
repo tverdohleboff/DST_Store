@@ -1,54 +1,87 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <title>DST Store</title>
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" href="favicon.ico" />
+  </head>
+  <body>
     <h1 class="text-header">Полезные товары по реальным ценам</h1>
-    <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-</head>
-<body>
     <div class="main-container">
-        <div id='productsContainer' class="products-container"></div>   
-        <div class='cart-container'>
-            <div class="cart-inner-container">
-                <div class="cart-title">Корзина</div>
-                <div id="cart" class="cart-content"></div>
-            </div>    
-        </div>      
+      <div id="productsContainer" class="products-container"></div>
+      <div class="cart-container">
+        <div class="cart-inner-container">
+          <div class="cart-title">Корзина</div>
+          <div id="cart" class="cart-content"></div>
+        </div>
+      </div>
     </div>
     <div class="orders-container">
-        <h2 class="text-header">Заказы</h2>
-        <div id="orders" class="orders-inner-container"> </div>
+      <h2 class="text-header">Заказы</h2>
+      <div id="orders" class="orders-inner-container"></div>
     </div>
     <div class="modal modal_closed">
-        <div class="overlay">
-            <div class="modal-container">
-                <div class="modal-inner-container">
-                    <form id="placeOrderForm">
-                        <div class="place-order-form__input-container">
-                            <label for="firstName" class="place-order-form__label">Имя</label>
-                            <input id="firstName" type="text" name="firstName" class="place-order-form__input" />
-                        </div>
-                        <div class="place-order-form__input-container">
-                            <label for="lastName"  class="place-order-form__label">Фамилия</label>
-                            <input id="lastName" type="text" name="lastName" class="place-order-form__input" />
-                        </div>
-                        <div class="place-order-form__input-container">
-                            <label for="email"  class="place-order-form__label">E-mail</label>
-                            <input id="email" type="email" name="email" class="place-order-form__input" />
-                        </div>
-                        <div class="place-order-form__buttons-container">
-                            <button type="button" id="modalCancelOrderButton" class="button order-cancel-button">Отмена</button>
-                            <button type="submit" id="modalPlaceOrderButton" class="button place-order-form__submit-button">Заказать</button>
-                        </div>
-                    </form>
-                </div>
-                <button type="button" class="modal-close-button">&#9587;</button>
-            </div>
+      <div class="overlay">
+        <div class="modal-container">
+          <div class="modal-inner-container">
+            <form id="placeOrderForm">
+              <div class="place-order-form__input-container">
+                <label for="firstName" class="place-order-form__label">
+                  Имя
+                </label>
+                <input
+                  id="firstName"
+                  type="text"
+                  name="firstName"
+                  class="place-order-form__input"
+                />
+              </div>
+              <div class="place-order-form__input-container">
+                <label for="lastName" class="place-order-form__label">
+                  Фамилия
+                </label>
+                <input
+                  id="lastName"
+                  type="text"
+                  name="lastName"
+                  class="place-order-form__input"
+                />
+              </div>
+              <div class="place-order-form__input-container">
+                <label for="email" class="place-order-form__label">
+                  E-mail
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  class="place-order-form__input"
+                />
+              </div>
+              <div class="place-order-form__buttons-container">
+                <button
+                  type="button"
+                  id="modalCancelOrderButton"
+                  class="button order-cancel-button"
+                >
+                  Отмена
+                </button>
+                <button
+                  type="submit"
+                  id="modalPlaceOrderButton"
+                  class="button place-order-form__submit-button"
+                >
+                  Заказать
+                </button>
+              </div>
+            </form>
+          </div>
+          <button type="button" class="modal-close-button">&#9587;</button>
         </div>
-    </div>  
+      </div>
+    </div>
     <script src="index.js"></script>
-</body>
+  </body>
 </html>
-
