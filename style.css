@@ -34,7 +34,7 @@ body {
     flex-basis: 100%;
     border-radius: 6px;
     padding: 12px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
 }
 
 .product-image {
@@ -96,7 +96,7 @@ body {
 .add-to-cart-button:hover { 
     background:#f9db31;  
     border-radius: 14px;
-    transform: scale(1.06, 1.06);
+    transform: scale(1.03, 1.03);
     box-shadow: 0 3px 7px rgba(0,0,0,0.3);
     transition: opacity 0.3s ease-in-out;
     }
@@ -275,7 +275,7 @@ body {
 .place-order-button:hover {
     background:#f9db31;  
     border-radius: 14px;
-    transform: scale(1.06, 1.06);
+    transform: scale(1.03, 1.03);
     box-shadow: 0 3px 7px rgba(0,0,0,0.3);
     transition: opacity 0.3s ease-in-out;
 }
@@ -287,7 +287,7 @@ body {
 .place-order-form__submit-button:hover {
     background:#f9db31;  
     border-radius: 14px;
-    transform: scale(1.06, 1.06);
+    transform: scale(1.03, 1.03);
     box-shadow: 0 3px 7px rgba(0,0,0,0.3);
     transition: opacity 0.3s ease-in-out;
 }
@@ -301,7 +301,7 @@ body {
 .order-cancel-button:hover {
     background-color: rgb(247, 75, 75);
     border-radius: 14px;
-    transform: scale(1.06, 1.06);
+    transform: scale(1.03, 1.03);
     box-shadow: 0 3px 7px rgba(0,0,0,0.3);
     transition: opacity 0.3s ease-in-out;
 }
@@ -322,12 +322,13 @@ body {
     margin-bottom: 40px;
     border-radius: 14px;
     box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .order:hover {
-    transform: scale(1.06, 1.06);
+    transform: scale(1.03, 1.03);
     box-shadow: 0 3px 7px rgba(0,0,0,0.3);
-    transition: opacity 0.3s ease-in-out;
+   
 }
 
 .order-date {
@@ -388,7 +389,7 @@ body {
     }
     
     .product:last-child {
-        flex-grow: 0    ;
+        flex-grow: 0;
     }  
 
     .order {
@@ -429,7 +430,6 @@ body {
     }  
 
     .product:hover { 
-        transform: scale(1.03, 1.03);
         box-shadow: 0 5px 10px rgba(0,0,0,0.3);
      }
 }
